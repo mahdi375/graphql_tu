@@ -1,18 +1,28 @@
 import { ApolloServer, gql } from "apollo-server";
 
-// type definition (Schema)
+/**
+ *
+ * GraphQL applications consist of two primary components: a schema of type defini‐
+ * tions and resolvers, which resolve the queries and mutations performed against the
+ * data.
+ *
+ */
+
+// Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  schema {
-    query: Query
-  }
-  type Query {
-    greeting: String
+  # This schema will describe a single Query named greeting that will return a string:
+  type Query { # type (object)
+    greeting: String # field: type
+    age: Float
   }
 `;
 
+// Provide resolver functions for our schema fields
 const resolvers = {
+  // Query  object
   Query: {
     greeting: () => "hello graphQL world :)",
+    age: () => 2.3445535,
   },
 };
 

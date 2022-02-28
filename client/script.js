@@ -8,8 +8,9 @@ const getGreeting = async () => {
     },
     body: JSON.stringify({
       query: `
-        query {
+        {                                        # same as: "query {"   # query is default 
           greeting
+          age
         }
       `,
     }),
@@ -21,8 +22,7 @@ const getGreeting = async () => {
 };
 
 setTimeout(() => {
-  getGreeting().then(({ greeting }) => {
-    const header = document.querySelector("h1");
-    header.textContent = greeting;
+  getGreeting().then((data) => {
+    console.log(data);
   });
 }, 500);
