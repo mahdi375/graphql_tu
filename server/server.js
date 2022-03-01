@@ -12,15 +12,14 @@ import { ApolloServer, gql } from "apollo-server";
 const typeDefs = gql`
   # This schema will describe a single Query named greeting that will return a string:
   type Query { # type (object)
-    Pizza: Pizza # field: type
-    User: User
+    pizza: Pizza # field: type
+    user: User
   }
 
   type Pizza {
     # id: ID! # unique required identifier
-    title: String!
-    priece: Float!
-    # des: [String] # Optional String type
+    title: String! # non-nulable
+    priece: Float # nullable
   }
 
   type User {
@@ -33,13 +32,13 @@ const typeDefs = gql`
 const resolvers = {
   // Query  object
   Query: {
-    Pizza: () => {
+    pizza: () => {
       return {
-        title: "piza title",
-        priece: 34.56,
+        title: "special pizza",
+        priece: null, //
       };
     },
-    User: () => {
+    user: () => {
       return {
         name: "mahdi",
       };
