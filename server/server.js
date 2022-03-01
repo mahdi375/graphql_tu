@@ -10,7 +10,7 @@ import { ApolloServer, gql } from "apollo-server";
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  # This schema will describe a single Query named greeting that will return a string:
+  # Query and Mutation are specific types :)
   type Query { # type (object)
     pizza: Pizza # field: type
     user: User
@@ -24,7 +24,7 @@ const typeDefs = gql`
 
   type User {
     name: String
-    age: Float
+    age: Int
   }
 `;
 
@@ -44,16 +44,6 @@ const resolvers = {
       };
     },
   },
-
-  // Pizza: {
-  //   title: () => "pizza titaleeee",
-  //   priece: () => 345,
-  // },
-
-  // User: {
-  //   name: () => "mahdi",
-  //   age: () => 27,
-  // },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
