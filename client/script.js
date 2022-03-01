@@ -9,8 +9,14 @@ const getGreeting = async () => {
     body: JSON.stringify({
       query: `
         {                                        # same as: "query {"   # query is default 
-          greeting
-          age
+          Pizza {
+            title
+            priece
+          }
+
+          User {
+            name
+          }
         }
       `,
     }),
