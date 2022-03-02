@@ -1,6 +1,6 @@
 import fs from "fs";
 import { ApolloServer, gql } from "apollo-server";
-import { pizza_resolver, user_resolver } from "./logics.js";
+import resolvers from "./logics.js";
 
 /**
  *
@@ -14,13 +14,6 @@ import { pizza_resolver, user_resolver } from "./logics.js";
 const typeDefs = gql(fs.readFileSync("./schema.graphql", { encoding: "utf8" }));
 
 // Provide resolver functions for our schema fields
-const resolvers = {
-  // Query  object
-  Query: {
-    pizza: pizza_resolver,
-    user: user_resolver,
-  },
-};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 server.listen({ port: 9000 }).then((serverInfo) => {
