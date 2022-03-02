@@ -1,7 +1,8 @@
 // logic around pizza
-const pizza_resolver = (title = "noop") => {
+// root arg refers to Query obj    => Query {pizza {...}}
+const pizza_resolver = (root, args) => {
   return {
-    title: title,
+    title: args.title,
     priece: Math.floor(Math.random() * 100),
   };
 };

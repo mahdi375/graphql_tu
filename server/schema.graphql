@@ -1,8 +1,12 @@
 # Query and Mutation are specific types :)
 type Query { # type (object)
-  pizza(title: String = "my pizza"): Pizza # field: type
+  pizza(title: String!): Pizza # field(argument: arg_type): filed_type
   user: User
 }
+
+#hints
+# name: String!   =>  name of type string and non-nullable
+# ids: [ID!]!     => ids of type array of non-nullable ID that could not be null as whole
 
 type Pizza {
   # id: ID! # unique required identifier
