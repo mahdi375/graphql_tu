@@ -1,4 +1,6 @@
+import fs from "fs";
 import { ApolloServer, gql } from "apollo-server";
+import { pizza_resolver, user_resolver } from "./logics.js";
 
 /**
  *
@@ -9,40 +11,14 @@ import { ApolloServer, gql } from "apollo-server";
  */
 
 // Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  # Query and Mutation are specific types :)
-  type Query { # type (object)
-    pizza: Pizza # field: type
-    user: User
-  }
-
-  type Pizza {
-    # id: ID! # unique required identifier
-    title: String! # non-nulable
-    priece: Float # nullable
-  }
-
-  type User {
-    name: String
-    age: Int
-  }
-`;
+const typeDefs = gql(fs.readFileSync("./schema.graphql", { encoding: "utf8" }));
 
 // Provide resolver functions for our schema fields
 const resolvers = {
   // Query  object
   Query: {
-    pizza: () => {
-      return {
-        title: "special pizza",
-        priece: null, //
-      };
-    },
-    user: () => {
-      return {
-        name: "mahdi",
-      };
-    },
+    pizza: pizza_resolver,
+    user: user_resolver,
   },
 };
 

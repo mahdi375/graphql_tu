@@ -1,0 +1,16 @@
+# Query and Mutation are specific types :)
+type Query { # type (object)
+  pizza(title: String = "my pizza"): Pizza # field: type
+  user: User
+}
+
+type Pizza {
+  # id: ID! # unique required identifier
+  title: String! # non-nulable
+  priece: Float # nullable
+}
+
+type User {
+  name: String
+  age: Int
+}
